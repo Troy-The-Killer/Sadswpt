@@ -171,12 +171,12 @@ async def on_message(message):
         limite = int(message.content.split().pop(1))
         await client.purge_from(message.channel, limit=limite)
         
-        mensagem = discord.Embed(
+        mensagem1 = discord.Embed(
             color=verde,
             description='{} Mensagens foram deletadas.'.format(limite)
         )
         
-        purge = await client.send_message(message.channel, embed=mensagem)
+        purge = await client.send_message(message.channel, embed=mensagem1)
         await asyncio.sleep(10)
         await client.delete_message(purge)
 
