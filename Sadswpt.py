@@ -53,16 +53,6 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='💞 fb.com/sadsongswpt | {} Membros'.format(user),type=1,url='https://www.twitch.tv/soulindoefofo'),status='streaming')
 
 @client.event
-async def on_member_join(member):
-    entrada = client.get_channel('465099746567127070')
-
-	mensagem = discord.Embed(
-		color=verde,
-		description='Olá {}, Seja bem-vindo ao {}. Leia as regras: <#465121342417534976>.'.format(member.mention, member.server.name)
-	)
-	await client.send_message(entrada, embed=mensagem)
-
-@client.event
 async def on_message(message):
 
     #==================
