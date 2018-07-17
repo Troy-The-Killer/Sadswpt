@@ -1,1 +1,0 @@
-Sadswpt: python "Sadswpt.py"
