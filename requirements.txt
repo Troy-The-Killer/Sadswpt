@@ -1,0 +1,10 @@
+discord.py
+asyncio
+requests
+random
+json
+randint
+randrange
+uniform
+time
+datetime
