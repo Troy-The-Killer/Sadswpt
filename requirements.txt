@@ -1,7 +1,6 @@
 discord.py
+time
 random
-requests
-randint
-strftime
+asyncio
 json
-randrange, uniform
+requests
