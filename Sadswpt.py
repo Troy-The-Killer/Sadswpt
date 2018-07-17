@@ -528,12 +528,12 @@ async def on_message(message):
         else:
             try:
                 membro = message.mentions[0]
-                mensagem = discord.Embed(
+                mensagem2 = discord.Embed(
                     title='🔨 Banido(a)!',
                     color=verde,
                     description='Usuário banido com sucesso!'
                 )
-                await client.send_message(message.channel, embed=mensagem)
+                await client.send_message(message.channel, embed=mensagem2)
                 await client.ban(membro, delete_message_days=7)
 
             except:
