@@ -1,1 +1,7 @@
 discord.py
+random
+requests
+randint
+strftime
+json
+randrange, uniform
