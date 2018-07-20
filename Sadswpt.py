@@ -909,7 +909,7 @@ async def on_message(message):
         gameName = message.content.replace("s!statusbot", "")
         if message.author.server_permissions.administrator:
 
-            await client.change_presence(game=discord.Game(name="💞 {} | {} Membros".format(gameName, user), type=1, url='https://www.twitch.tv/soulindoefofo'), status='streaming')
+            await client.change_presence(game=discord.Game(name=gameName))
 
             await client.send_message(message.channel, "`Status do bot foi alterado para: {}`".format(gameName))
         else:
@@ -999,7 +999,10 @@ async def on_message(message):
                         '🔹 `5` » <@&468980045109657600>\n'
                         '🔹 `6` » <@&468980045101268992>\n'
                         '🔹 `7` » <@&468980045080297473>\n'
-                        '🔹 `8` » <@&468980045072039957>',
+                        '🔹 `8` » <@&468980045072039957>\n'
+                        '🔹 `9` » <@&469695871097896981>\n'
+                        '🔹 `10` » <@&469696089591906324>\n'
+                        '🔹 `11` » <@&469696789839347722>',
         )
         await client.send_message(message.channel, embed=cores)
 
