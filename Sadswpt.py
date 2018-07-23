@@ -1314,7 +1314,7 @@ async def on_message(message):
 
         if not role in message.author.roles:
             erro = discord.Embed(
-                title='😡 Erro!'
+                title='😡 Erro!',
                 color=vermelho,
                 description='Você precisa do cargo: <@&467810745598607360>. Para utilizar.'
             )
