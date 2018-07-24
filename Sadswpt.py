@@ -1289,13 +1289,13 @@ async def on_message(message):
 
             if int(numero) == 12:
                 role = discord.utils.find(lambda r: r.name == "Carmesim", msg.server.roles)
-                await client.add_roles(message.author, role)
+                await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
                     color=verde,
                     description='💼 | Cargo: <@&470805545058697216>. Removido com sucesso!',
                 )
-                await client.remove_roles(message.channel, embed=info)
+                await client.send_message(message.channel, embed=info)
 
             if int(numero) == 13:
                 role = discord.utils.find(lambda r: r.name == "Verde Claro", msg.server.roles)
@@ -1307,9 +1307,9 @@ async def on_message(message):
                 )
                 await client.send_message(message.channel, embed=info)
 
-    if message.content.lower().startswith('s!remover'):
+    if message.content.lower().startswith('s!sorteio'):
         role = discord.utils.get(message.server.roles, name='Anúncios')
-        canal = client.get_channel("465776229770067969")
+        canal = client.get_channel('465776229770067969')
         autor = message.author.mention
 
         if not role in message.author.roles:
@@ -1349,5 +1349,5 @@ async def on_reaction_add(reaction, user):
                         '`Remover:` **s!remover <número>**',
         )
         await client.edit_message(msg, embed=cores)
-        
+
 client.run(token)
