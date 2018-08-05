@@ -1525,7 +1525,7 @@ async def on_message(message):
                                              '\n\n'
                                              'Tag: [ <@&465968428457656351> ]'%(autor),
             )
-            await client.send_message(message.channel, 'Sucesso! Canal: <#465776229770067969>.'
+            await client.send_message(message.channel, 'Sucesso! Canal: <#465776229770067969>.')
 
 @client.event
 async def on_reaction_add(reaction, user):
