@@ -134,7 +134,7 @@ async def on_message(message):
         
         for member in x:
             embed1 = discord.Embed(color=0x1ce1de, description=(msg))
-            embed1.set_image(url="https://cdn.discordapp.com/attachments/467216188103983114/469693153256013824/tumblr_p7onqlI9R31tcvan1o1_540.gif")
+            embed1.set_image(url="https://media.discordapp.net/attachments/471143059548012545/475514596778573834/FSj0ljq.gif")
             embed1.set_footer(text=client.user.name, icon_url=client.user.avatar_url)
 
             try:
@@ -1431,6 +1431,7 @@ async def on_message(message):
                                              '\n\n'
                                              'Tag: [ <@&465968428457656351> ]'%(autor),
             )
+            await client.send_message(message.channel, 'Sucesso! Canal: <#465776229770067969>.'
 
 @client.event
 async def on_reaction_add(reaction, user):
