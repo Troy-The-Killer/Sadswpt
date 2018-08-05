@@ -29,7 +29,9 @@ token = privado.token()
 preto = 0x000000
 verde = 0x0BFF00
 vermelho = 0xFF0000
+Vermelho =0xFF0000
 roxo = 0x4d0083
+Magenta = 0xFF00FF
 
 # Variáveis:
 msg_id = None
@@ -989,30 +991,39 @@ async def on_message(message):
     #==================
 
     if message.content.lower().startswith('s!cores'):
-        cores = discord.Embed(
-            color=preto,
-            description='💼 **Mudar cor do Cargo** 💼'
-                        '\n\n'
-                        '`'
-                        'Adicionar: s!cargo <número>\n'
-                        'Remover: s!remover <número>'
-                        '`'
-                        '\n\n'
-                        '🔹 `1` » <@&468980045302464522>\n'
-                        '🔹 `2` » <@&468980045222903818>\n'
-                        '🔹 `3` » <@&468980045159989278>\n'
-                        '🔹 `4` » <@&468980045159989260>\n'
-                        '🔹 `5` » <@&468980045109657600>\n'
-                        '🔹 `6` » <@&468980045101268992>\n'
-                        '🔹 `7` » <@&468980045080297473>\n'
-                        '🔹 `8` » <@&468980045072039957>\n'
-                        '🔹 `9` » <@&469695871097896981>',
+        adicionar = discord.Embed(
+            title='💕 Adicionar a Cor',
+            color=Magenta,
+            description='s!cargo » `número`'
         )
-        sdsd = await client.send_message(message.channel, embed=cores)
-        await client.add_reaction(sdsd, "⏩")
+        remover = discord.Embed(
+            title='💕 Remover a Cor',
+            color=Magenta,
+            description='s!remover » `número`'
+        )
+        cores = discord.Embed(
+            color=Magenta,
+            description='💼 **Troca de Cores**'
+                        '\n\n'
+                        '🔹 `1` » <@&468980045222903818>\n'
+                        '🔹 `2` » <@&468980045302464522>\n'
+                        '🔹 `3` » <@&468980045159989260>\n'
+                        '🔹 `4` » <@&469696089591906324>\n'
+                        '🔹 `5` » <@&468980045159989278>\n'
+                        '🔹 `6` » <@&469695871097896981>\n'
+                        '🔹 `7` » <@&468980045080297473>\n'
+                        '🔹 `8` » <@&470805545058697216>\n'
+                        '🔹 `9` » <@&470805680329326612>',
+        )
+        await client.send_message(message.channel, embed=adicionar)
+        await client.send_message(message.channel, embed=remover)
+
+        reacao = await client.send_message(message.channel, embed=cores)
+
+        await client.add_reaction(reacao, "⏩")
 
         global msg_id
-        msg_id = sdsd.id
+        msg_id = reacao.id
         global msg_user
         msg_user = message.author
     
@@ -1021,6 +1032,7 @@ async def on_message(message):
     #==================
     
     if message.content.lower().startswith('s!cargo'):
+
         role = discord.utils.get(message.server.roles, name='色')
         numero = message.content.strip('s!cargo')
         msg = message.author
@@ -1032,65 +1044,64 @@ async def on_message(message):
                 description='Você precisa do cargo: <@&468980044966920193>.'
             )
             await client.send_message(message.channel, embed=erro)
-
         else:
             if int(numero) == 1:
-                role = discord.utils.find(lambda r: r.name == "Bronze", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045302464522>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 2:
                 role = discord.utils.find(lambda r: r.name == "Gelo", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&468980045222903818>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 3:
-                role = discord.utils.find(lambda r: r.name == "Verde Água", msg.server.roles)
+            elif int(numero) == 2:
+                role = discord.utils.find(lambda r: r.name == "Bronze", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045159989278>. Adicionado com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045302464522>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 4:
+            elif int(numero) == 3:
                 role = discord.utils.find(lambda r: r.name == "Vinho", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&468980045159989260>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 5:
-                role = discord.utils.find(lambda r: r.name == "Salmão", msg.server.roles)
+            elif int(numero) == 4:
+                role = discord.utils.find(lambda r: r.name == "Roxo escuro", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045109657600>. Adicionado com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469696089591906324>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 5:
+                role = discord.utils.find(lambda r: r.name == "Verde Água", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045159989278>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 6:
-                role = discord.utils.find(lambda r: r.name == "Preto", msg.server.roles)
+                role = discord.utils.find(lambda r: r.name == "Violeta", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045101268992>. Adicionado com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469695871097896981>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
@@ -1099,114 +1110,154 @@ async def on_message(message):
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&468980045080297473>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 8:
-                role = discord.utils.find(lambda r: r.name == "Azul", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045072039957>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 9:
-                role = discord.utils.find(lambda r: r.name == "Violeta", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469695871097896981>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 10:
-                role = discord.utils.find(lambda r: r.name == "Roxo escuro", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469696089591906324>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 11:
-                role = discord.utils.find(lambda r: r.name == "Limão", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469696789839347722>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 12:
                 role = discord.utils.find(lambda r: r.name == "Carmesim", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&470805545058697216>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 13:
+            elif int(numero) == 9:
                 role = discord.utils.find(lambda r: r.name == "Verde Claro", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&470805680329326612>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 14:
-                role = discord.utils.find(lambda r: r.name == "Amarelo", msg.server.roles)
+            elif int(numero) == 10:
+                role = discord.utils.find(lambda r: r.name == "Roxo", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471836101925928970>. Adicionado com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470805963876597760>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 15:
-                role = discord.utils.find(lambda r: r.name == "Khaki", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471835648135921684>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 16:
-                role = discord.utils.find(lambda r: r.name == "Vermelho escuro", msg.server.roles)
-                await client.add_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471835250595725313>. Adicionado com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 17:
+            elif int(numero) == 11:
                 role = discord.utils.find(lambda r: r.name == "Azul Real", msg.server.roles)
                 await client.add_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
+                    color=Magenta,
                     description='💼 | Cargo: <@&471836427597119489>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 12:
+                role = discord.utils.find(lambda r: r.name == "Limão", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469696789839347722>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 13:
+                role = discord.utils.find(lambda r: r.name == "Amêndoa", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045080297482>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 14:
+                role = discord.utils.find(lambda r: r.name == "Khaki", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471835648135921684>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 15:
+                role = discord.utils.find(lambda r: r.name == "Amarelo", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471836101925928970>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 16:
+                role = discord.utils.find(lambda r: r.name == "Salmão", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045109657600>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 17:
+                role = discord.utils.find(lambda r: r.name == "Azul Claro", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470806392178081793>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 18:
+                role = discord.utils.find(lambda r: r.name == "Azul Claro", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471835250595725313>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 19:
+                role = discord.utils.find(lambda r: r.name == "Vermelho escuro", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045101268992>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 20:
+                role = discord.utils.find(lambda r: r.name == "Preto", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045101268992>. Adicionado com sucesso!',
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 21:
+                role = discord.utils.find(lambda r: r.name == "Azul", msg.server.roles)
+                await client.add_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045072039957>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
             else:
                 info = discord.Embed(
-                    color=vermelho,
+                    color=Vermelho,
                     description='💼 | Cargo: Não encontrado!',
                 )
                 await client.send_message(message.channel, embed=info)
@@ -1214,8 +1265,9 @@ async def on_message(message):
     #====================
     # Comandos → Remover:
     #====================
-
+    
     if message.content.lower().startswith('s!remover'):
+
         role = discord.utils.get(message.server.roles, name='色')
         numero = message.content.strip('s!remover')
         msg = message.author
@@ -1223,68 +1275,68 @@ async def on_message(message):
         if not role in message.author.roles:
             erro = discord.Embed(
                 title='😡 Erro!',
-                color=vermelho,
+                color=Magenta,
                 description='Você precisa do cargo: <@&468980044966920193>.'
             )
             await client.send_message(message.channel, embed=erro)
-        else:    
+        else:
             if int(numero) == 1:
-                role = discord.utils.find(lambda r: r.name == "Bronze", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045302464522>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 2:
                 role = discord.utils.find(lambda r: r.name == "Gelo", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045222903818>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045222903818>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 2:
+                role = discord.utils.find(lambda r: r.name == "Bronze", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045302464522>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 3:
-                role = discord.utils.find(lambda r: r.name == "Verde Água", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045159989278>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 4:
                 role = discord.utils.find(lambda r: r.name == "Vinho", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045159989260>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045159989260>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 4:
+                role = discord.utils.find(lambda r: r.name == "Roxo escuro", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469696089591906324>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 5:
-                role = discord.utils.find(lambda r: r.name == "Salmão", msg.server.roles)
+                role = discord.utils.find(lambda r: r.name == "Verde Água", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045109657600>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045159989278>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 6:
-                role = discord.utils.find(lambda r: r.name == "Preto", msg.server.roles)
+                role = discord.utils.find(lambda r: r.name == "Violeta", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045101268992>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469695871097896981>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
@@ -1293,115 +1345,157 @@ async def on_message(message):
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045080297473>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045080297473>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
             elif int(numero) == 8:
-                role = discord.utils.find(lambda r: r.name == "Azul", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&468980045072039957>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 9:
-                role = discord.utils.find(lambda r: r.name == "Violeta", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469695871097896981>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 10:
-                role = discord.utils.find(lambda r: r.name == "Roxo escuro", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469696089591906324>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 11:
-                role = discord.utils.find(lambda r: r.name == "Limão", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&469696789839347722>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 12:
                 role = discord.utils.find(lambda r: r.name == "Carmesim", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&470805545058697216>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470805545058697216>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 13:
+            elif int(numero) == 9:
                 role = discord.utils.find(lambda r: r.name == "Verde Claro", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&470805680329326612>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470805680329326612>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 14:
-                role = discord.utils.find(lambda r: r.name == "Amarelo", msg.server.roles)
+            elif int(numero) == 10:
+                role = discord.utils.find(lambda r: r.name == "Roxo", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471836101925928970>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470805963876597760>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
-            elif int(numero) == 15:
-                role = discord.utils.find(lambda r: r.name == "Khaki", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471835648135921684>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 16:
-                role = discord.utils.find(lambda r: r.name == "Vermelho escuro", msg.server.roles)
-                await client.remove_roles(message.author, role)
-
-                info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471835250595725313>. Removido com sucesso!',
-                )
-                await client.send_message(message.channel, embed=info)
-
-            elif int(numero) == 17:
+            elif int(numero) == 11:
                 role = discord.utils.find(lambda r: r.name == "Azul Real", msg.server.roles)
                 await client.remove_roles(message.author, role)
 
                 info = discord.Embed(
-                    color=verde,
-                    description='💼 | Cargo: <@&471836427597119489>. Removido com sucesso!',
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471836427597119489>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 12:
+                role = discord.utils.find(lambda r: r.name == "Limão", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&469696789839347722>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 13:
+                role = discord.utils.find(lambda r: r.name == "Amêndoa", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045080297482>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+
+            elif int(numero) == 14:
+                role = discord.utils.find(lambda r: r.name == "Khaki", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471835648135921684>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+
+            elif int(numero) == 15:
+                role = discord.utils.find(lambda r: r.name == "Amarelo", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471836101925928970>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 16:
+                role = discord.utils.find(lambda r: r.name == "Salmão", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045109657600>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 17:
+                role = discord.utils.find(lambda r: r.name == "Azul Claro", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&470806392178081793>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 18:
+                role = discord.utils.find(lambda r: r.name == "Vermelho escuro", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&471835250595725313>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 19:
+                role = discord.utils.find(lambda r: r.name == "Preto", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045101268992>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 20:
+                role = discord.utils.find(lambda r: r.name == "Marrom Pastel", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&472592332265357332>. Removido com sucesso!'
+                )
+                await client.send_message(message.channel, embed=info)
+
+            elif int(numero) == 21:
+                role = discord.utils.find(lambda r: r.name == "Azul", msg.server.roles)
+                await client.remove_roles(message.author, role)
+
+                info = discord.Embed(
+                    color=Magenta,
+                    description='💼 | Cargo: <@&468980045072039957>. Removido com sucesso!'
                 )
                 await client.send_message(message.channel, embed=info)
 
             else:
                 info = discord.Embed(
-                    color=vermelho,
-                    description='💼 | Cargo: Não encontrado!',
+                    color=Vermelho,
+                    description='💼 | Cargo: Não encontrado!'
                 )
                 await client.send_message(message.channel, embed=info)
 
@@ -1436,49 +1530,43 @@ async def on_message(message):
 @client.event
 async def on_reaction_add(reaction, user):
     msg = reaction.message
+
     if reaction.emoji == "⏩" and msg.id == msg_id and user == msg_user:
         cores = discord.Embed(
-            color=preto,
-            description='💼 **Mudar cor do Cargo** 💼'
+            color=Magenta,
+            description='💼 **Troca de Cores**'
                         '\n\n'
-                        '`'
-                        'Adicionar: s!cargo <número>\n'
-                        'Remover: s!remover <número>'
-                        '`'
-                        '\n\n'
-                        '🔹 `10` » <@&469696089591906324>\n'
-                        '🔹 `11` » <@&469696789839347722>\n'
-                        '🔹 `12` » <@&470805545058697216>\n'
-                        '🔹 `13` » <@&470805680329326612>\n'
-                        '🔹 `14` » <@&471836101925928970>\n'
-                        '🔹 `15` » <@&471835648135921684>\n'
-                        '🔹 `16` » <@&471835250595725313>\n'
-                        '🔹 `17` » <@&471836427597119489>',
+                        '🔹 `10` <@&470805963876597760>\n'
+                        '🔹 `11` <@&471836427597119489>\n'
+                        '🔹 `12` <@&469696789839347722>\n'
+                        '🔹 `13` <@&468980045080297482>\n'
+                        '🔹 `14` <@&471835648135921684>\n'
+                        '🔹 `15` <@&471836101925928970>\n'
+                        '🔹 `16` <@&468980045109657600>\n'
+                        '🔹 `17` <@&470806392178081793>\n'
+                        '🔹 `18` <@&471835250595725313>\n'
+                        '🔹 `19` <@&468980045101268992>\n'
+                        '🔹 `20` <@&472592332265357332>\n'
+                        '🔹 `21` <@&468980045072039957>',
         )
-        wwq = await client.edit_message(msg, embed=cores)
-        await client.add_reaction(wwq, "⏪")
+        reacao_2 = await client.edit_message(msg, embed=cores)
+        await client.add_reaction(reacao_2, "⏪")
 
     if reaction.emoji == "⏪" and msg.id == msg_id and user == msg_user:
         cores = discord.Embed(
-            color=preto,
-            description='💼 **Mudar cor do Cargo** 💼'
+            color=Magenta,
+            description='💼 **Troca de Cores**'
                         '\n\n'
-                        '`'
-                        'Adicionar: s!cargo <número>\n'
-                        'Remover: s!remover <número>'
-                        '`'
-                        '\n\n'
-                        '🔹 `1` » <@&468980045302464522>\n'
-                        '🔹 `2` » <@&468980045222903818>\n'
-                        '🔹 `3` » <@&468980045159989278>\n'
-                        '🔹 `4` » <@&468980045159989260>\n'
-                        '🔹 `5` » <@&468980045109657600>\n'
-                        '🔹 `6` » <@&468980045101268992>\n'
+                        '🔹 `1` » <@&468980045222903818>\n'
+                        '🔹 `2` » <@&468980045302464522>\n'
+                        '🔹 `3` » <@&468980045159989260>\n'
+                        '🔹 `4` » <@&469696089591906324>\n'
+                        '🔹 `5` » <@&468980045159989278>\n'
+                        '🔹 `6` » <@&469695871097896981>\n'
                         '🔹 `7` » <@&468980045080297473>\n'
-                        '🔹 `8` » <@&468980045072039957>\n'
-                        '🔹 `9` » <@&469695871097896981>\n',
+                        '🔹 `8` » <@&470805545058697216>\n'
+                        '🔹 `9` » <@&470805680329326612>',
         )
         await client.edit_message(msg, embed=cores)
-
 
 client.run(token)
