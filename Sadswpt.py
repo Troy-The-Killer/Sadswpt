@@ -1231,7 +1231,7 @@ async def on_message(message):
 
                 info = discord.Embed(
                     color=Magenta,
-                    description='💼 | Cargo: <@&468980045101268992>. Adicionado com sucesso!',
+                    description='💼 | Cargo: <@&471835250595725313>. Adicionado com sucesso!',
                 )
                 await client.send_message(message.channel, embed=info)
 
