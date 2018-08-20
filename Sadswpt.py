@@ -164,13 +164,13 @@ async def on_message(message):
         r4 = discord.Embed(
             title="Cargos da equipe",
             color=verde,
-            description="• <@&398597840609345536> » Eles são a auditoria do servidor! São os que comandam tudo, são os comandantes de tudo."
+            description="• `Zap` » Eles são a auditoria do servidor! São os que comandam tudo, são os comandantes de tudo."
                         "\n\n"
-                        "• <@&398580087634788355> » Eles administram os Moderadores e Guardiões, dão funções ao mesmos para manter o servidor em uma forma confortável."
+                        "• `Adm` » Eles administram os Moderadores e Guardiões, dão funções ao mesmos para manter o servidor em uma forma confortável."
                         "\n\n"
-                        "• <@&465153939470548994> » Como o nome diz, eles são a moderação do servidor, eles aplicam punições em pessoas más indesejadas, eles moderam os eventos que ocorrem no servidor durante a semana. Eles deixam o servidor agradável ao público."
+                        "• `Moderador` » Como o nome diz, eles são a moderação do servidor, eles aplicam punições em pessoas más indesejadas, eles moderam os eventos que ocorrem no servidor durante a semana. Eles deixam o servidor agradável ao público."
                         "\n\n"
-                        "• <@&465153350724354053> » Não possuem muitas permissões, eles apenas ajudam na interação com o público em geral do servidor. Mas mesmo assim fazem um ótimo trabalho!",
+                        "• `Guardião` » Não possuem muitas permissões, eles apenas ajudam na interação com o público em geral do servidor. Mas mesmo assim fazem um ótimo trabalho!",
         )
         r5 = discord.Embed(
             title="Sistema de níveis",
