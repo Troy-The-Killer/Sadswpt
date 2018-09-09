@@ -1129,8 +1129,8 @@ async def on_message(message):
     #=====================
     
     if message.channel == client.get_channel('488158232037163049'):
-        role1 = discord.utils.get(message.server.roles, name='positivo')
-        role2 = discord.utils.get(message.server.roles, name='negativo')
+        role1 = discord.utils.get(user.server.roles, name='positivo')
+        role2 = discord.utils.get(user.server.roles, name='negativo')
         
         await client.add_reaction(message, role1)
         await client.add_reaction(message, role2)
