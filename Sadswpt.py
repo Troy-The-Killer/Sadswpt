@@ -1127,13 +1127,13 @@ async def on_message(message):
     #=====================
     # Comandos - Sugestão:
     #=====================
-    
+   
     if message.channel == client.get_channel('488158232037163049'):
-        role1 = discord.utils.get(user.server.roles, name='positivo')
-        role2 = discord.utils.get(user.server.roles, name='negativo')
-        
-        await client.add_reaction(message, role1)
-        await client.add_reaction(message, role2)
+        emoji1 = discord.utils.get(client.get_all_emojis(), name="positivo")
+        emoji2 = discord.utils.get(client.get_all_emojis(), name="negativo")
+
+        await client.add_reaction(message, emoji1)
+        await client.add_reaction(message, emoji2)
  
     #==================
     # Comandos → Cargo:
